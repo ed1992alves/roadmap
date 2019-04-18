@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Timeline | Basic demo</title>
+  <script src="js/vis.js"></script>
+  <script src="js/database.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/jquery-3.3.1.js"></script>
+  <link href="css/vis.css" rel="stylesheet" type="text/css" />
+  <link href="css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="navigation">
+  <button class="today disabled">Today </button>
+  <button class="dropdown zoomFilter" onClick="dropdownClick('navigation', 'zoom')">Week </button>
+  <div class="dropdownOptions zoom" style="display:none">
+    <div class="option option1 selected">Week</div>
+    <div class="option option2">Month</div>
+    <div class="option option3">Quarter</div>
+    <div class="option option4">Year</div>
+  </div>
+  <div class="bar"></div>
+  <button class="dropdown priorityFilter" onClick="dropdownClick('navigation', 'priority')">Priority </button>
+  <div class= "dropdownOptions priority" style="display:none"> 
+      <div class="option option1 all selected">All</div>
+      <div class="option option2">Medium</div>
+      <div class="option option3">High</div>
+      <div class="option option4">Critical</div>
+  </div>
+  <div class="logo"></div>
+</div>
+<div id="visualization"></div>
+<div id="infotext"> Press data label to create a new event </div>
+<div class="modal">
+  <div class="specification">
+    <div class="title formfield"></div>
+    <div class="ndays formfield">00 days</div>
+    <div class="close"> <button onclick = "cleanLayout()">  </button></div>
+    <div id="fields"></div>
+    <div class="columns">
+      <div class="firstColumn">
+        <div class="label startDateLabel">Start date</div>
+        <div class="startDate formfield"></div>
+        <div class="label endDateLabel">End date</div>
+        <div class="endDate formfield"></div>
+        <div class="label priorityLabel" >Priority</div>
+        <div class="dropdown priorityFilter" onClick="dropdownClick('specification', 'priority')">Normal </div>
+        <div class="dropdownOptions priority" style="display:none"> 
+            <div class="option option1" onclick="changePriorityOnEvent(0)">Medium</div>
+            <div class="option option2" onclick="changePriorityOnEvent(1)">High</div>
+            <div class="option option3" onclick="changePriorityOnEvent(2)">Critical</div>
+        </div>
+        <div class="label usersLabel">Users</div>
+        <div class="dropdown usersFilter" onClick="dropdownClick('specification', 'users')">Users </div>
+          <div class="dropdownOptions users" style="display:none"></div>
+      </div>
+      <div class="secondColumn">
+        <div class="label descriptionLabel">Description</div>
+        <div class="content"></div>
+        <div class="buttons"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script> var container = document.getElementById('visualization'); </script>
+<script src="js/main.js"></script>
+</body>
+</html>
